@@ -1,15 +1,15 @@
-%define		kdeappsver	19.04.1
+%define		kdeappsver	20.12.3
 %define		kframever	5.56.0
 %define		qtver		5.9.0
 %define		kaname		kcron
 Summary:	kcron
 Name:		ka5-%{kaname}
-Version:	19.04.1
+Version:	20.12.3
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Applications
-Source0:	http://download.kde.org/stable/applications/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	e696f6c6a6db9d503bd4a1f7e3c2e0d6
+Source0:	http://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
+# Source0-md5:	d9d1d1eda9f36d751b571b39334ef013
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel
 BuildRequires:	Qt5Core-devel >= %{qtver}
@@ -52,6 +52,7 @@ cd build
 %install
 rm -rf $RPM_BUILD_ROOT
 %ninja_install -C build
+rm -rf $RPM_BUILD_ROOT%{_kdedocdir}/{ko,zh_CN}
 
 %find_lang %{kaname} --all-name --with-kde
 
@@ -60,6 +61,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{kaname}.lang
 %defattr(644,root,root,755)
-/etc/xdg/kcron.categories
 %attr(755,root,root) %{_libdir}/qt5/plugins/kcm_cron.so
 %{_datadir}/kservices5/kcm_cron.desktop
+%{_datadir}/qlogging-categories5/kcron.categories
+%{_datadir}/metainfo/org.kde.kcron.metainfo.xml
