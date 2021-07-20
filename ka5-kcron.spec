@@ -36,6 +36,10 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 KCron - an application for scheduling programs to run in the
 background using cron.
 
+%description -l pl.UTF-8
+KCron - aplikacja do planowania uruchamiania programów w tle
+używając crona.
+
 %prep
 %setup -q -n %{kaname}-%{version}
 
