@@ -1,15 +1,15 @@
-%define		kdeappsver	21.08.3
+%define		kdeappsver	21.12.0
 %define		kframever	5.56.0
 %define		qtver		5.9.0
 %define		kaname		kcron
 Summary:	kcron
 Name:		ka5-%{kaname}
-Version:	21.08.3
+Version:	21.12.0
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Applications
 Source0:	http://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	f6acc91cb26ac7c735efb7d5a39647e2
+# Source0-md5:	53cca73064b9c6956b18d328a6a07d78
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel
 BuildRequires:	Qt5Core-devel >= %{qtver}
@@ -37,8 +37,8 @@ KCron - an application for scheduling programs to run in the
 background using cron.
 
 %description -l pl.UTF-8
-KCron - aplikacja do planowania uruchamiania programów w tle
-używając crona.
+KCron - aplikacja do planowania uruchamiania programów w tle używając
+crona.
 
 %prep
 %setup -q -n %{kaname}-%{version}
@@ -69,3 +69,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kservices5/kcm_cron.desktop
 %{_datadir}/qlogging-categories5/kcron.categories
 %{_datadir}/metainfo/org.kde.kcron.metainfo.xml
+%attr(755,root,root) %{_prefix}/libexec/kauth/kcron_helper
+%{_datadir}/dbus-1/system-services/local.kcron.crontab.service
+%{_datadir}/dbus-1/system.d/local.kcron.crontab.conf
+%{_datadir}/polkit-1/actions/local.kcron.crontab.policy
